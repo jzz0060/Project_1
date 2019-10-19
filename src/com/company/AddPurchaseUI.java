@@ -235,11 +235,13 @@ public class AddPurchaseUI {
                 return;
             }
 
+            labPrice.setText(String.valueOf(product.mPrice));
+
             if (purchase.mQuantity > product.mQuantity) {
-                JOptionPane.showMessageDialog(null,
+               JOptionPane.showMessageDialog(null,
                         "Not enough available products!", "Information",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
+                    JOptionPane.INFORMATION_MESSAGE);
+           }
 
             purchase.mCost = purchase.mQuantity * product.mPrice;
             purchase.mTax = purchase.mCost * 0.09;

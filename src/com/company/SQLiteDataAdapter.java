@@ -42,19 +42,14 @@ public class SQLiteDataAdapter implements IDataAdapter {
         ProductModel product = new ProductModel();
 
         try {
-            String sql = "SELECT ProductID, Barcode, Name, Expiration, Date, Price, TaxRate, Quantity, Supplier, ManufacturedDate FROM Product WHERE ProductID = " + productID;
+            String sql = "SELECT ProductID, Name, TaxRate, Quantity, Price FROM Products WHERE ProductID = " + productID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             product.mProductID = rs.getInt("ProductId");
-            product.mBarcode = rs.getInt("Barcode");
             product.mName = rs.getString("Name");
-            product.mExpiration = rs.getString("Expiration");
-            product.mDate = rs.getString("Date");
-            product.mPrice = rs.getDouble("Price");
             product.mTaxRate = rs.getDouble("TaxRate");
-            product.mQuantity = rs.getInt("Quantity");
-            product.mSupplier = rs.getString("Supplier");
-            product.mManufacturedDate = rs.getString("ManufacturedDate");
+            product.mQuantity = rs.getInt( "Quantity");
+            product.mPrice = rs.getDouble("Price");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -82,14 +77,14 @@ public class SQLiteDataAdapter implements IDataAdapter {
         CustomerModel customer = new CustomerModel();
 
         try {
-            String sql = "SELECT CustomerID, Name, Address, Phone, PaymentINFO FROM Customer WHERE CustomerID = " + customerID;
+            String sql = "SELECT CustomerID, Name, Address, Phone FROM Customers WHERE CustomerID = " + customerID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             customer.mCustomerID = rs.getInt("CustomerId");
             customer.mName = rs.getString("Name");
             customer.mAddress = rs.getString("Address");
             customer.mPhone = rs.getInt("Phone");
-            customer.mPaymentINFO = rs.getString("PaymentINFO");
+//            customer.mPaymentINFO = rs.getString("PaymentINFO");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
